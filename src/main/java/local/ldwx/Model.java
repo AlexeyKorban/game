@@ -240,6 +240,5 @@ public class Model {
         Move move = queue.peek().getMove();
         move.move();
     }
-
 }
 

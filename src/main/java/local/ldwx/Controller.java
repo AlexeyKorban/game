@@ -19,7 +19,6 @@ public class Controller extends KeyAdapter {
 
     public int getScore(){
         return model.score;
-
     }
 
     public void resetGame(){
