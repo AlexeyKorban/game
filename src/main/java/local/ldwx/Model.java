@@ -5,8 +5,8 @@ import java.util.*;
 public class Model {
     private static final int FIELD_WIDTH = 4;
     private Tile[][] gameTiles;
-    int score;
-    int maxTile;
+    private int score;
+    private int maxTile;
 
     private Stack<Integer> previousScores;
     private Stack<Tile[][]> previousStates;
@@ -18,6 +18,18 @@ public class Model {
         this.maxTile = 2;
         this.previousScores = new Stack<>();
         this.previousStates = new Stack<>();
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getMaxTile() {
+        return maxTile;
     }
 
     private List<Tile> getEmptyTiles() {
@@ -32,7 +44,7 @@ public class Model {
         return result;
     }
 
-    void addTile() {
+    private void addTile() {
         List<Tile> list = getEmptyTiles();
         if (list != null && list.size() != 0) {
             list.get((int) (list.size() * Math.random())).setValue(Math.random() < 0.9 ? 2 : 4);

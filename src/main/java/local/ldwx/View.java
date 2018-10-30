@@ -33,10 +33,22 @@ public class View extends JPanel {
 
         g.drawString("Score: " + controller.getScore(), 140, 465);
 
-        if (isGameWon) {
-            JOptionPane.showMessageDialog(this, "You've won!");
-        } else if(isGameLost) {
-            JOptionPane.showMessageDialog(this, "You've lost :(");
+        if (isGameLost || isGameWon) {
+            Object[] options = {"OK", "Cancel"};
+            int choice = JOptionPane.showOptionDialog(null,
+                    isGameLost ? "You are lost. Restart?" : "You are won. Restart?",
+                    "Restart?",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+            if (choice == JOptionPane.YES_OPTION) {
+                controller.resetGame();
+                repaint();
+            } else {
+                System.exit(0);
+            }
         }
     }
 
@@ -47,7 +59,7 @@ public class View extends JPanel {
         int xOffset = offsetCoors(x);
         int yOffset = offsetCoors(y);
         g.setColor(tile.getTileColor());
-        g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE , 8, 8);
+        g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 8, 8);
         g.setColor(tile.getFontColor());
         final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
         final Font font = new Font(FONT_NAME, Font.BOLD, size);

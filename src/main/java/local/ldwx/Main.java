@@ -4,8 +4,7 @@ import javax.swing.*;
 
 public class Main {
     public static void main (String[] args){
-        Model model = new Model();
-        Controller controller = new Controller(model);
+        Controller controller = new Controller(new Model());
         JFrame game = new JFrame();
         game.setTitle("2048");
         game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
