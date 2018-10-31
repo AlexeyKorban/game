@@ -34,20 +34,8 @@ public class View extends JPanel {
         g.drawString("Score: " + controller.getScore(), 140, 465);
 
         if (isGameLost || isGameWon) {
-            Object[] options = {"OK", "Cancel"};
-            int choice = JOptionPane.showOptionDialog(null,
-                    isGameLost ? "You are lost. Restart?" : "You are won. Restart?",
-                    "Restart?",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]);
-            if (choice == JOptionPane.YES_OPTION) {
-                controller.reset();
-            } else {
-                Runtime.getRuntime().exit(0);
-            }
+            JOptionPane.showMessageDialog(this, isGameLost ? "You are lost" : "You are won");
+            controller.reset();
         }
     }
 
