@@ -3,7 +3,7 @@ package local.ldwx;
 import java.awt.*;
 
 public class Tile {
-    int value;
+    private int value;
 
     public Tile(int value) {
         this.value = value;

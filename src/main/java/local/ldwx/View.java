@@ -11,8 +11,8 @@ public class View extends JPanel {
 
     private Controller controller;
 
-    boolean isGameWon = false;
-    boolean isGameLost = false;
+    protected boolean isGameWon = false;
+    protected boolean isGameLost = false;
 
     public View(Controller controller) {
         setFocusable(true);
@@ -42,7 +42,7 @@ public class View extends JPanel {
     private void drawTile(Graphics g2, Tile tile, int x, int y) {
         Graphics2D g = ((Graphics2D) g2);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        int value = tile.value;
+        int value = tile.getValue();
         int xOffset = offsetCoors(x);
         int yOffset = offsetCoors(y);
         g.setColor(tile.getTileColor());
