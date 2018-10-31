@@ -84,7 +84,9 @@ public class Model {
             if (tiles[j].getValue() != 0 && tiles[j].getValue() == tiles[j + 1].getValue()) {
                 tiles[j].setValue(tiles[j].getValue() * 2);
                 tiles[j + 1].setValue(0);
-                if (tiles[j].getValue() > maxTile) maxTile = tiles[j].getValue();
+                if (tiles[j].getValue() > maxTile) {
+                    maxTile = tiles[j].getValue();
+                }
                 score += tiles[j].getValue();
                 isChanged = true;
 
@@ -237,8 +239,11 @@ public class Model {
     private MoveEfficiency getMoveEfficiency(Move move) {
         MoveEfficiency moveEfficiency;
         move.move();
-        if (hasBoardChanged()) moveEfficiency = new MoveEfficiency(getEmptyTiles().size(), score, move);
-        else moveEfficiency = new MoveEfficiency(-1, 0, move);
+        if (hasBoardChanged()) {
+            moveEfficiency = new MoveEfficiency(getEmptyTiles().size(), score, move);
+        } else {
+            moveEfficiency = new MoveEfficiency(-1, 0, move);
+        }
         rollback();
         return moveEfficiency;
     }

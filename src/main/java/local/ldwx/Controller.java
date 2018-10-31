@@ -13,30 +13,36 @@ public class Controller extends KeyAdapter {
         this.view = new View(this);
     }
 
-    public Tile[][] getGameTiles(){
+    public Tile[][] getGameTiles() {
         return model.getGameTiles();
     }
 
-    public int getScore(){
+    public int getScore() {
         return model.getScore();
     }
 
-    void resetGame() {
+    private void resetGame() {
         model.setScore(0);
         view.isGameLost = false;
         view.isGameWon = false;
         model.resetGameTiles();
+
+    }
+
+    public void reset() {
+        resetGame();
+        view.repaint();
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             resetGame();
         }
-        if (!model.canMove()){
+        if (!model.canMove()) {
             view.isGameLost = true;
         }
-        if (!view.isGameLost && !view.isGameWon){
+        if (!view.isGameLost && !view.isGameWon) {
             switch (e.getKeyCode()) {
                 case (KeyEvent.VK_LEFT):
                     model.left();
@@ -50,18 +56,20 @@ public class Controller extends KeyAdapter {
                 case (KeyEvent.VK_DOWN):
                     model.down();
                     break;
+                default:
+                    break;
             }
         }
         if (model.getMaxTile() == WINNING_TILE) {
             view.isGameWon = true;
         }
-        if(e.getKeyCode() == KeyEvent.VK_Z){
+        if (e.getKeyCode() == KeyEvent.VK_Z) {
             model.rollback();
         }
-        if(e.getKeyCode() == KeyEvent.VK_R){
+        if (e.getKeyCode() == KeyEvent.VK_R) {
             model.randomMove();
         }
-        if(e.getKeyCode() == KeyEvent.VK_A){
+        if (e.getKeyCode() == KeyEvent.VK_A) {
             model.autoMove();
         }
         view.repaint();

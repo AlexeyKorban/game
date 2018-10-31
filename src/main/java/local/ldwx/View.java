@@ -44,10 +44,9 @@ public class View extends JPanel {
                     options,
                     options[0]);
             if (choice == JOptionPane.YES_OPTION) {
-                controller.resetGame();
-                repaint();
+                controller.reset();
             } else {
-                System.exit(0);
+                Runtime.getRuntime().exit(0);
             }
         }
     }
@@ -71,8 +70,9 @@ public class View extends JPanel {
         final int w = fm.stringWidth(s);
         final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
-        if (value != 0)
+        if (value != 0) {
             g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+        }
     }
 
     private static int offsetCoors(int arg) {
