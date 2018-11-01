@@ -222,6 +222,7 @@ public class Model {
                 break;
             default:
                 down();
+                break;
         }
     }
 
