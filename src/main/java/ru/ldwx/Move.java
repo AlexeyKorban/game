@@ -1,4 +1,4 @@
-package local.ldwx;
+package ru.ldwx;
 
 @FunctionalInterface
 public interface Move {

@@ -1,4 +1,4 @@
-package local.ldwx;
+package ru.ldwx;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

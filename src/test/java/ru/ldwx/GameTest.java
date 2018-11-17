@@ -1,4 +1,4 @@
-package local.ldwx;
+package ru.ldwx;
 
 import org.junit.Assert;
 import org.junit.Before;

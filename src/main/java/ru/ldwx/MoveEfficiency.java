@@ -1,4 +1,4 @@
-package local.ldwx;
+package ru.ldwx;
 
 public class MoveEfficiency implements Comparable<MoveEfficiency> {
     private int numberOfEmptyTiles;
